@@ -12,7 +12,7 @@ st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
 web_apps = st.sidebar.selectbox("Select Web Apps",
-                                "Exploratory Data Analysis")
+                                ("Exploratory Data Analysis", "Spiderman Movie"))
 
 
 if web_apps == "Exploratory Data Analysis":
@@ -65,3 +65,23 @@ if web_apps == "Exploratory Data Analysis":
             file_name="flower.png",
             mime="image/png"
         )
+if web_apps == "Spiderman Movie":
+  st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
+    st.markdown('Do you agree that this movie is good?')
+
+    agree = st.checkbox('I agree')
+
+    if agree:
+        st.write('Great, I agree with you')
+
+    st.markdown('Was the villain cool?')
+
+    yes = st.checkbox('Yes')
+    no = st.checkbox ('No')
+
+    if yes:
+        st.markdown('**Great, I agree with you!**')
+
+    if no:
+        st.write('**I do not agree with you. What is the reason for this?**')
+        st.text_input('Input your reasoning here.')
