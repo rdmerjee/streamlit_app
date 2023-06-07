@@ -10,7 +10,7 @@ st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
 df = pd.DataFrame(
-   np.random.randn(50, 20),
+   np.random.randn(50, 3),
    columns=('col %d' % i for i in range(3)))
 
 st.dataframe(df)
