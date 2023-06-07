@@ -65,6 +65,54 @@ if web_apps == "Exploratory Data Analysis":
             file_name="flower.png",
             mime="image/png"
         )
+
+    if column_type == "Categorical":
+      numerical_column = st.sidebar.selectbox(
+          'Select a Column', df.select_dtypes(include=['int64', 'float64']).columns)
+
+      # histogram
+      choose_color = st.color_picker('Pick a Color', "#69b3a2")
+      choose_opacity = st.slider(
+          'Color Opacity', min_value=0.0, max_value=1.0, step=0.05)
+
+      hist_bins = st.slider('Number of bins', min_value=5,
+                            max_value=150, value=30)
+      hist_title = st.text_input('Set Title', 'Histogram')
+      hist_xtitle = st.text_input('Set x-axis Title', numerical_column)
+      hist_ytitle = st.text_input('Set y-axis Title', numerical_column)
+
+      fig, ax = plt.subplots()
+      ax.hist(df[numerical_column], bins=hist_bins,
+              edgecolor="black", color=choose_color, alpha=choose_opacity)
+      ax.set_title(hist_title)
+      ax.set_xlabel(hist_xtitle)
+      ax.set_ylabel(hist_ytitle)
+      ax.set_ylabel('Count')
+
+      st.pyplot(fig)
+      filename = "plot.png"
+      fig.savefig(filename,dpi = 300)
+
+      # Display the download button
+      with open("plot.png", "rb") as file:
+        btn = st.download_button(
+            label="Download image",
+            data=file,
+            file_name="flower.png",
+            mime="image/png"
+        )
+      minimum = np.min(df[numerical_column])
+      q1 = np.percentile(df[numerical_column], 25)
+      median = np.median(df[numerical_column])
+      q3 = np.percentile(df[numerical_column], 75)
+      maximum = np.max(df[numerical_column])
+
+      st.write("Minimum:", minimum)
+      st.write("First Quartile:", q1)
+      st.write("Median", median)
+      st.write("Third Quartile:", q3)
+      st.write("Maximum:", maximum)
+    
 if web_apps == "Spiderman Movie":
     st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
     st.markdown('Do you agree that this movie is good?')
