@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 st.title('Rik Mukherjee Application')
 st.markdown('This is **the special application for Stats 21**')
