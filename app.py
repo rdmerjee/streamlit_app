@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
 st.title('Rik Mukherjee Application')
 st.markdown('This is **the special application for Stats 21**')
@@ -7,7 +9,9 @@ st.markdown('An application that gives you what you need for the project in Stat
 st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
-st.metric('My metric', 42, 2)
+df = pd.DataFrame(
+   np.random.randn(50, 20),
+   columns=('col %d' % i for i in range(3)))
 
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
 st.markdown('Do you agree that this movie is good?')
