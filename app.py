@@ -1,21 +1,21 @@
 import streamlit as st
 
 
-st.title('Title of your application')
-st.markdown('this is **bold text**')
-st.markdown('this is *italic text*')
+st.title('Rik Mukherjee Application')
+st.markdown('this is **the special application for Stats 21**')
+st.markdown('this is *The thing you need*')
 
-st.sidebar.title('Title of sidebar')
-st.sidebar.markdown('markdown **text** in the *sidebar*')
+st.sidebar.title('More')
+st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
 
 agree = st.checkbox('I agree')
 
 if agree:
     st.write('Great')
-    st.markdown('this is markdown **text**')
+    st.markdown('You have agreed')
 
-agree_sidebar = st.sidebar.checkbox('side bar checkbox')
+agree_sidebar = st.sidebar.checkbox('This app is cool')
 
 if agree_sidebar:
-    st.sidebar.write('**side bar checked**')
+    st.sidebar.write('You have agreed')
