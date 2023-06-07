@@ -13,6 +13,8 @@ df = pd.DataFrame(
    np.random.randn(50, 20),
    columns=('col %d' % i for i in range(3)))
 
+st.dataframe(df)
+
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
 st.markdown('Do you agree that this movie is good?')
 
