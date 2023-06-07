@@ -14,8 +14,20 @@ st.markdown('Do you agree that this movie is good?')
 agree = st.checkbox('I agree')
 
 if agree:
-    st.write('Great')
-    st.markdown('You have agreed')
+    st.write('Great, I agree with you')
+
+st.markdown('Was the villain cool?')
+
+yes = st.checkbox('Yes')
+no = st.checkbox ('No')
+
+if yes:
+    st.write('Great, I agree with you')
+
+if no:
+    st.write('I do not agree with you. What is the reason for this?')
+
+st.text_input('Input your reasoning here.')
 
 agree_sidebar = st.sidebar.checkbox('If this app is cool, check this box.')
 
