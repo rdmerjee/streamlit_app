@@ -10,14 +10,14 @@ st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
 data_this = {'Player Name': ['John Wall', 'Garrett Temple','Marcin Gortat', 'Paul Pierce','Nene'],
-        'Points Scored': [8, 3, 8, 7, 6],
-        'Minutes Played': [30, 29, 27, 22, 18]}
+             'Points Scored': [8, 3, 8, 7, 6],
+             'Minutes Played': [30, 29, 27, 22, 18]}
 
 df = pd.DataFrame(data_this)
 
 st.table(df)
 
-st.markdown('We can see a differences in points scored between the players, despite the fact that they play different minutes. Playing more minutes did not 100 percent correlate to scoring more.')
+st.markdown('You can tell that the minutes played do not correlate exactly with point scored. This tells us that this is not a 1 to 1 correlation between these two variables.')
 
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
 st.markdown('Do you agree that this movie is good?')
