@@ -26,8 +26,7 @@ if yes:
 
 if no:
     st.write('I do not agree with you. What is the reason for this?')
-
-st.text_input('Input your reasoning here.')
+    st.text_input('Input your reasoning here.')
 
 agree_sidebar = st.sidebar.checkbox('If this app is cool, check this box.')
 
