@@ -4,8 +4,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import io
 
+st.title('Rik Mukherjee Application')
+st.markdown('This is **the special application for Stats 21**')
+st.markdown('An application that gives you what you need for the project in Stats 21')
+
+st.sidebar.title('More')
+st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
+
 web_apps = st.sidebar.selectbox("Select Web Apps",
-                                ("Exploratory Data Analysis", "Distributions"))
+                                "Exploratory Data Analysis")
 
 
 if web_apps == "Exploratory Data Analysis":
