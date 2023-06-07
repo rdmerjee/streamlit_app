@@ -15,7 +15,7 @@ data_this = {'Name': ['John Wall', 'Garrett Temple','Marcin Gortat', 'Paul Pierc
 
 df = pd.DataFrame(data_this)
 
-st.dataframe(df)
+st.write(df)
 
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
 st.markdown('Do you agree that this movie is good?')
