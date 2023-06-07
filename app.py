@@ -2,45 +2,59 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import io
 
-st.title('Rik Mukherjee Application')
-st.markdown('This is **the special application for Stats 21**')
-st.markdown('An application that gives you what you need for the project in Stats 21')
+web_apps = st.sidebar.selectbox("Select Web Apps",
+                                ("Exploratory Data Analysis", "Distributions"))
 
-st.sidebar.title('More')
-st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
-data_this = {'Player Name': ['John Wall', 'Garrett Temple','Marcin Gortat', 'Paul Pierce','Nene'],
-             'Points Scored': [8, 3, 8, 7, 6],
-             'Minutes Played': [30, 29, 27, 22, 18]}
+if web_apps == "Exploratory Data Analysis":
 
-df = pd.DataFrame(data_this)
+  uploaded_file = st.sidebar.file_uploader("Choose a file")
 
-st.table(df)
+  if uploaded_file is not None:
+    # Can be used wherever a "file-like" object is accepted:
+    df = pd.read_csv(uploaded_file)
+    show_df = st.checkbox("Show Data Frame", key="disabled")
 
-st.markdown('You can tell that the minutes played do not correlate exactly with point scored. This tells us that this is not a 1 to 1 correlation between these two variables.')
+    if show_df:
+      st.write(df)
 
-st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
-st.markdown('Do you agree that this movie is good?')
+    column_type = st.sidebar.selectbox('Select Data Type',
+                                       ("Numerical", "Categorical", "Bool", "Date"))
 
-agree = st.checkbox('I agree')
+    if column_type == "Numerical":
+      numerical_column = st.sidebar.selectbox(
+          'Select a Column', df.select_dtypes(include=['int64', 'float64']).columns)
 
-if agree:
-    st.write('Great, I agree with you')
+      # histogram
+      choose_color = st.color_picker('Pick a Color', "#69b3a2")
+      choose_opacity = st.slider(
+          'Color Opacity', min_value=0.0, max_value=1.0, step=0.05)
 
-st.markdown('Was the villain cool?')
+      hist_bins = st.slider('Number of bins', min_value=5,
+                            max_value=150, value=30)
+      hist_title = st.text_input('Set Title', 'Histogram')
+      hist_xtitle = st.text_input('Set x-axis Title', numerical_column)
+      hist_ytitle = st.text_input('Set y-axis Title', numerical_column)
 
-yes = st.checkbox('Yes')
-no = st.checkbox ('No')
+      fig, ax = plt.subplots()
+      ax.hist(df[numerical_column], bins=hist_bins,
+              edgecolor="black", color=choose_color, alpha=choose_opacity)
+      ax.set_title(hist_title)
+      ax.set_xlabel(hist_xtitle)
+      ax.set_ylabel(hist_ytitle)
+      ax.set_ylabel('Count')
 
-if yes:
-   st.markdown('**Great, I agree with you!**')
+      st.pyplot(fig)
+      filename = "plot.png"
+      fig.savefig(filename,dpi = 300)
 
-if no:
-   st.write('**I do not agree with you. What is the reason for this?**')
-   st.text_input('Input your reasoning here.')
-
-agree_sidebar = st.sidebar.checkbox('If this app is cool, check this box.')
-
-if agree_sidebar:
-    st.sidebar.write('You have agreed with me that this app is cool.')
+      # Display the download button
+      with open("plot.png", "rb") as file:
+        btn = st.download_button(
+            label="Download image",
+            data=file,
+            file_name="flower.png",
+            mime="image/png"
+        )
