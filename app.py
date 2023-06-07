@@ -9,7 +9,7 @@ st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
-st.markdwon('Do you agree that this movie is good?')
+st.markdown('Do you agree that this movie is good?')
 
 agree = st.checkbox('I agree')
 
