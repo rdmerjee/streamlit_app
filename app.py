@@ -9,14 +9,15 @@ st.markdown('An application that gives you what you need for the project in Stat
 st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
 
-data_this = {'Name': ['John Wall', 'Garrett Temple','Marcin Gortat', 'Paul Pierce','Nene'],
-        'Points Scored': [8, 3, 8, 7, 6]}
+data_this = {'Player Name': ['John Wall', 'Garrett Temple','Marcin Gortat', 'Paul Pierce','Nene'],
+        'Points Scored': [8, 3, 8, 7, 6],
+        'Minutes Played': [30, 29, 27, 22, 18]}
 
 df = pd.DataFrame(data_this)
 
 st.table(df)
 
-st.line_chart(data_this)
+st.markdown('We can see a differences in points scored between the players.')
 
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
 st.markdown('Do you agree that this movie is good?')
