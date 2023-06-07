@@ -22,7 +22,7 @@ yes = st.checkbox('Yes')
 no = st.checkbox ('No')
 
 if yes:
-    st.write('**Great, I agree with you!**')
+    st.markdown('**Great, I agree with you!**')
 
 if no:
     st.write('**I do not agree with you. What is the reason for this?**')
