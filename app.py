@@ -1,16 +1,13 @@
 import streamlit as st
-import pandas as pd
-
-df = pd.DataFrame(['John Wall', 30, 8],['Garrett Temple',29,3],['Marcin Gortat',28,8],['Paul Pierce',23,8],['Nene',18,7],['Otto Porter',25,13])
 
 st.title('Rik Mukherjee Application')
 st.markdown('This is **the special application for Stats 21**')
 st.markdown('An application that gives you what you need for the project in Stats 21')
 
-st.dataframe(df)
-
 st.sidebar.title('More')
 st.sidebar.markdown('This project was done in Spring 2023 for Stats 21')
+
+st.metric('My metric', 42, 2)
 
 st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
 st.markdown('Do you agree that this movie is good?')
