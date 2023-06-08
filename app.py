@@ -96,8 +96,10 @@ if web_apps == "Exploratory Data Analysis":
       observation_labels = list(observation_counts.index)
       observation_values = list(observation_counts.values)
 
+      index = np.arange(1)
+
       fig, ax = plt.subplots()
-      ax.bar(observation_labels,observation_values, height = 0.8, edgecolor="black", color=choose_color, alpha=choose_opacity)
+      ax.bar(index, sum(observation_values)/len(observation_values), edgecolor="black", color=choose_color, alpha=choose_opacity)
       ax.set_title(bar_title)
       ax.set_xlabel(bar_xtitle)
       ax.set_ylabel(bar_ytitle)
