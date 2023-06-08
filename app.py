@@ -94,9 +94,8 @@ if web_apps == "Exploratory Data Analysis":
       heigh = df[categorical_column].value_counts().sort_index()
       heigh.plot(kind = 'bar')
       plt.title(bar_title)
-      plt.set_xlabel(bar_xtitle)
-      plt.set_ylabel(bar_ytitle)
-      plt.set_ylabel('Count')
+      plt.xlabel(bar_xtitle)
+      plt.ylabel('Count')
 
       plt.show()
 
