@@ -89,15 +89,16 @@ if web_apps == "Exploratory Data Analysis":
 
       bar_title = st.text_input('Set Title', 'Histogram')
       bar_xtitle = st.text_input('Set x-axis Title', categorical_column)
-      bar_ytitle = st.text_input('Set y-axis Title', categorical_column)
 
       heigh = df[categorical_column].value_counts().sort_index()
-      heigh.plot(kind = 'bar')
+      heighplot = heigh.plot(kind = 'bar')
       plt.title(bar_title)
       plt.xlabel(bar_xtitle)
       plt.ylabel('Count')
 
-      plt.show()
+      st.pyplot(heighplot)
+      filename = "plot.png"
+      fig.savefig(filename,dpi = 300)
 
       #fig, ax = plt.subplots()
       #ax.bar(df[categorical_column].value_counts()/(df[categorical_column].value_counts().sum()), height = heigh,
