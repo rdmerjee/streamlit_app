@@ -80,7 +80,7 @@ if web_apps == "Exploratory Data Analysis":
 
     if column_type == "Categorical":
       categorical_column = st.sidebar.selectbox(
-          'Select a Column', df.select_dtypes(include=['int64', 'float64']).columns)
+          'Select a Column', df.select_dtypes(include=['str']).columns)
 
       # histogram
       choose_color = st.color_picker('Pick a Color', "#69b3a2")
@@ -91,8 +91,10 @@ if web_apps == "Exploratory Data Analysis":
       bar_xtitle = st.text_input('Set x-axis Title', categorical_column)
       bar_ytitle = st.text_input('Set y-axis Title', categorical_column)
 
+      heigh = df[categorical_column].value_counts()
+
       fig, ax = plt.subplots()
-      ax.bar(df[categorical_column].value_counts(),
+      ax.bar(df[categorical_column].value_counts()/(df[categorical_column].value_counts().sum()), height = heigh,
               edgecolor="black", color=choose_color, alpha=choose_opacity)
       ax.set_title(bar_title)
       ax.set_xlabel(bar_xtitle)
