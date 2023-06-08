@@ -80,7 +80,7 @@ if web_apps == "Exploratory Data Analysis":
 
     if column_type == "Categorical":
       categorical_column = st.sidebar.selectbox(
-          'Select a Column', df.select_dtypes(include=['str']).columns)
+          'Select a Column', df.select_dtypes(include=['object']).columns)
 
       # histogram
       choose_color = st.color_picker('Pick a Color', "#69b3a2")
