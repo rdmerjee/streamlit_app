@@ -89,30 +89,32 @@ if web_apps == "Exploratory Data Analysis":
 
       bar_title = st.text_input('Set Title', 'Histogram')
       bar_xtitle = st.text_input('Set x-axis Title', categorical_column)
+      bar_ytitle = st.text_input('Set y-axis Title', categorical_column)
 
-      heigh = df[categorical_column].value_counts().sort_index()
-      heighplot = heigh.plot(kind = 'bar')
-      plt.title(bar_title)
-      plt.xlabel(bar_xtitle)
-      plt.ylabel('Count')
+      observation_counts = df[categorical_column].value_counts().sort_index()
 
-      st.pyplot(heighplot)
+      observation_labels = list(observation_counts.index)
+      observation_values = list(observation_counts.values)
+
+      fig, ax = plt.subplots()
+      ax.bar(observation_labels,observation_values, height = 0.8, edgecolor="black", color=choose_color, alpha=choose_opacity)
+      ax.set_title(bar_title)
+      ax.set_xlabel(bar_xtitle)
+      ax.set_ylabel(bar_ytitle)
+      ax.set_ylabel('Count')
+
+      st.pyplot(fig)
       filename = "plot.png"
       fig.savefig(filename,dpi = 300)
 
-      #fig, ax = plt.subplots()
-      #ax.bar(df[categorical_column].value_counts()/(df[categorical_column].value_counts().sum()), height = heigh,
-              #edgecolor="black", color=choose_color, alpha=choose_opacity)
-      #ax.set_title(bar_title)
-      #ax.set_xlabel(bar_xtitle)
-      #ax.set_ylabel(bar_ytitle)
-      #ax.set_ylabel('Count')
-
-      #st.pyplot(fig)
-      #filename = "plot.png"
-      #fig.savefig(filename,dpi = 300)
-
       # Display the download button
+      with open("plot.png", "rb") as file:
+        btn = st.download_button(
+            label="Download image",
+            data=file,
+            file_name="flower.png",
+            mime="image/png"
+        )
     
 if web_apps == "Spiderman Movie":
     st.markdown('I recently watched Spider-Man: Across the Spiderverse, and I was deeply moved by the film. The animation was beautiful, the characters were great, the main character was very vulnerable and easy to root for, and the villain was menacing but you could understand why he did what he did.')
