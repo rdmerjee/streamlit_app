@@ -91,6 +91,10 @@ if web_apps == "Exploratory Data Analysis":
       bar_xtitle = st.text_input('Set x-axis Title', categorical_column)
       bar_ytitle = st.text_input('Set y-axis Title', categorical_column)
 
+      column_data = df[categorical_column]
+
+      category_counts = column_data.value_counts()
+
       observation_counts = df[categorical_column].value_counts().sort_index()
 
       observation_labels = list(observation_counts.index)
@@ -99,11 +103,12 @@ if web_apps == "Exploratory Data Analysis":
       index = np.arange(1)
 
       fig, ax = plt.subplots()
-      ax.bar(index, sum(observation_values)/len(observation_values), edgecolor="black", color=choose_color, alpha=choose_opacity)
+      ax.bar(category_counts.index, category_counts.values/len(categorical_column), edgecolor="black", color=choose_color, alpha=choose_opacity)
       ax.set_title(bar_title)
       ax.set_xlabel(bar_xtitle)
       ax.set_ylabel(bar_ytitle)
       ax.set_ylabel('Count')
+      ax.set_xticklabels(labels = category_counts.index, rotation = 90)
 
       st.pyplot(fig)
       filename = "plot.png"
